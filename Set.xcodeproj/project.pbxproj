@@ -12,6 +12,7 @@
 		92B77BE9220E92EA00D8002E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92B77BE7220E92EA00D8002E /* Main.storyboard */; };
 		92B77BEB220E92EB00D8002E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92B77BEA220E92EB00D8002E /* Assets.xcassets */; };
 		92B77BEE220E92EB00D8002E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92B77BEC220E92EB00D8002E /* LaunchScreen.storyboard */; };
+		92B77BF8220E992400D8002E /* BorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B77BF7220E992400D8002E /* BorderButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		92B77BEA220E92EB00D8002E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		92B77BED220E92EB00D8002E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		92B77BEF220E92EB00D8002E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		92B77BF7220E992400D8002E /* BorderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +41,7 @@
 			isa = PBXGroup;
 			children = (
 				92B77BE2220E92EA00D8002E /* Set */,
+				92B77BF6220E930400D8002E /* Supporting Files */,
 				92B77BE1220E92EA00D8002E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,14 +57,22 @@
 		92B77BE2220E92EA00D8002E /* Set */ = {
 			isa = PBXGroup;
 			children = (
-				92B77BE3220E92EA00D8002E /* AppDelegate.swift */,
 				92B77BE5220E92EA00D8002E /* ViewController.swift */,
 				92B77BE7220E92EA00D8002E /* Main.storyboard */,
 				92B77BEA220E92EB00D8002E /* Assets.xcassets */,
-				92B77BEC220E92EB00D8002E /* LaunchScreen.storyboard */,
 				92B77BEF220E92EB00D8002E /* Info.plist */,
+				92B77BF7220E992400D8002E /* BorderButton.swift */,
 			);
 			path = Set;
+			sourceTree = "<group>";
+		};
+		92B77BF6220E930400D8002E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				92B77BE3220E92EA00D8002E /* AppDelegate.swift */,
+				92B77BEC220E92EB00D8002E /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,6 +148,7 @@
 			files = (
 				92B77BE6220E92EA00D8002E /* ViewController.swift in Sources */,
 				92B77BE4220E92EA00D8002E /* AppDelegate.swift in Sources */,
+				92B77BF8220E992400D8002E /* BorderButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
