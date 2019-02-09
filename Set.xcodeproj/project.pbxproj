@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		92306ACB220EF946002E79D0 /* SetCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92306ACA220EF946002E79D0 /* SetCard.swift */; };
+		92306ACD220F09CE002E79D0 /* SetCardDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92306ACC220F09CE002E79D0 /* SetCardDeck.swift */; };
+		92332EEE220F1A930024D67A /* SetGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92332EED220F1A930024D67A /* SetGame.swift */; };
 		92B77BE4220E92EA00D8002E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B77BE3220E92EA00D8002E /* AppDelegate.swift */; };
 		92B77BE6220E92EA00D8002E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B77BE5220E92EA00D8002E /* ViewController.swift */; };
 		92B77BE9220E92EA00D8002E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92B77BE7220E92EA00D8002E /* Main.storyboard */; };
@@ -16,6 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		92306ACA220EF946002E79D0 /* SetCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCard.swift; sourceTree = "<group>"; };
+		92306ACC220F09CE002E79D0 /* SetCardDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetCardDeck.swift; sourceTree = "<group>"; };
+		92332EED220F1A930024D67A /* SetGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGame.swift; sourceTree = "<group>"; };
 		92B77BE0220E92EA00D8002E /* Set.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Set.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92B77BE3220E92EA00D8002E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92B77BE5220E92EA00D8002E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +68,9 @@
 				92B77BEA220E92EB00D8002E /* Assets.xcassets */,
 				92B77BEF220E92EB00D8002E /* Info.plist */,
 				92B77BF7220E992400D8002E /* BorderButton.swift */,
+				92306ACA220EF946002E79D0 /* SetCard.swift */,
+				92306ACC220F09CE002E79D0 /* SetCardDeck.swift */,
+				92332EED220F1A930024D67A /* SetGame.swift */,
 			);
 			path = Set;
 			sourceTree = "<group>";
@@ -146,8 +155,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92306ACD220F09CE002E79D0 /* SetCardDeck.swift in Sources */,
 				92B77BE6220E92EA00D8002E /* ViewController.swift in Sources */,
 				92B77BE4220E92EA00D8002E /* AppDelegate.swift in Sources */,
+				92306ACB220EF946002E79D0 /* SetCard.swift in Sources */,
+				92332EEE220F1A930024D67A /* SetGame.swift in Sources */,
 				92B77BF8220E992400D8002E /* BorderButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
