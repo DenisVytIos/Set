@@ -10,6 +10,10 @@ import Foundation
 
 struct SetGame{
 
+    private(set) var flipCount = 0
+    private(set) var score = 0
+    private(set) var numberSets = 0
+    
     private(set) var cardsOnTable    = [SetCard]()
     private(set) var cardsSelected   = [SetCard]()
     private(set) var cardsTryMatched = [SetCard]()
@@ -43,7 +47,54 @@ struct SetGame{
         cardsRemoved += cardsTryMatched
         cardsTryMatched.removeAll()
     }
+    var isSet: Bool? {
+        get {
+            guard cardsTryMatched.count == 3 else {return nil}
+            return SetCard.isSet(cards: cardsTryMatched)
+        }
+        set {
+            if newValue != nil {
+                
+                cardsTryMatched = cardsSelected
+                cardsSelected.removeAll()
+            } else {
+                cardsTryMatched.removeAll()
+            }
+        }
+    }
+    mutating func chooseCard(at index: Int) {
+        assert(cardsOnTable.indices.contains(index),
+               "SetGame.chooseCard(at: \(index)) : Choosen index out of range")
+        
+        let cardChoosen = cardsOnTable[index]
+        if !cardsRemoved.contains(cardChoosen) && !cardsTryMatched.contains(cardChoosen){
+            if  isSet != nil{
+                if isSet! { replaceOrRemoveThreeCards()}
+                isSet = nil
+            }
+            if cardsSelected.count == 2, !cardsSelected.contains(cardChoosen){
+                cardsSelected += [cardChoosen]
+                isSet = SetCard.isSet(cards: cardsSelected)
+            } else {
+                cardsSelected.inOut(element: cardChoosen)
+            }
+            flipCount += 1
+            score -= Points.flipOverPenalty
+        }
+    }
+    private struct Points {
+        static let matchBonus = 20
+        static let missMatchPenalty = 10
+        static var maxTimePenalty = 10
+        static var flipOverPenalty = 1
+    }
+    
+    private struct Constants {
+        static let startNumberCards = 12
+    }
+
 }
+
 
 extension Array where Element : Equatable {
     /// переключаем присутствие элемента в массиве:
