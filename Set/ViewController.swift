@@ -14,14 +14,16 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        updateButtonFromModel()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    private func updateButtonFromModel(){
+        for index in cardButtons.indices{
+            let button = cardButtons[index]
+            button.setTitle(String(index), for: .normal)
+            if index < 12{button.backgroundColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)}
+        }
     }
-
 
 }
 
