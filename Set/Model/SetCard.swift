@@ -11,29 +11,32 @@ import Foundation
 struct SetCard: Equatable, CustomStringConvertible {
     
     static func == (lhs: SetCard, rhs: SetCard) -> Bool{
-        return ((lhs.number == rhs.number) &&
-                (lhs.shape == rhs.shape) &&
+        return (
+            (lhs.number == rhs.number) &&
                 (lhs.color == rhs.color) &&
+                (lhs.shape == rhs.shape) &&
                 (lhs.fill == rhs.fill)
         )
     }
     
-    var description: String{return "\(number)-\(shape)\(color)-\(fill)-"}
+   
     
-    let number: Variant
-    let shape: Variant
-    let color: Variant
-    let fill: Variant
+    let number: Variant // number of symbol - 1, 2, 3
+    let color: Variant  // color  - 1, 2, 3 ( red, green, purple)
+    let shape: Variant  // symbol - 1, 2, 3 ( diamond, squiggle, oval)
+    let fill: Variant   // fill   - 1, 2, 3 ( solid, striped, open)
+    
+     var description: String{return "\(number)-\(shape)\(color)-\(fill)-"}
     
     enum Variant: Int, CustomStringConvertible{
         
         var description: String{return String(self.rawValue)}
         
-        case variant1 = 1
-        case variant2
-        case variant3
+        case v1 = 1
+        case v2
+        case v3
         
-        static var all: [Variant] {return [.variant1,.variant2,.variant3]}
+        static var all: [Variant] {return [.v1,.v2,.v3]}
         var idx: Int {return (self.rawValue - 1)}
         
     }
