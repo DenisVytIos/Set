@@ -9,11 +9,12 @@
 import Foundation
 
 struct SetGame{
+    
+    var playerIndex = 0
 
-
-    private(set) var flipCount  = 0
-    private(set) var score      = 0
-    private(set) var numberSets = 0
+    private(set) var flipCount  = [0,0]
+    private(set) var score      = [0,0]
+    private(set) var numberSets = [0,0]
 
     private(set) var cardsOnTable    = [SetCard]()
     private(set) var cardsSelected   = [SetCard]()
@@ -31,10 +32,10 @@ struct SetGame{
         set {
             if newValue != nil {
                 if newValue! {          //cards matchs
-                    score += Points.matchBonus
-                    numberSets += 1
+                    score[playerIndex] += Points.matchBonus
+                    numberSets[playerIndex] += 1
                 } else {               //cards didn't match - Penalize
-                    score -= Points.missMatchPenalty
+                    score[playerIndex] -= Points.missMatchPenalty
                 }
                 cardsTryMatched = cardsSelected
                 cardsSelected.removeAll()
@@ -60,8 +61,8 @@ struct SetGame{
             } else {
                 cardsSelected.inOut(element: cardChoosen)
             }
-            flipCount += 1
-            score -= Points.flipOverPenalty
+            flipCount[playerIndex] += 1
+            score[playerIndex] -= Points.flipOverPenalty
         }
     }
     
@@ -89,6 +90,10 @@ struct SetGame{
     }
     
     mutating func deal3() {
+        //вводим штрафи за сдачу 3 карт
+        if hints.count > 0{
+            score[playerIndex] -= Points.deal3Penalty
+        }
         if let deal3Cards =  take3FromDeck() {
             cardsOnTable += deal3Cards
         }
@@ -126,10 +131,11 @@ struct SetGame{
     }
     //------------------ Constants -------------
     private struct Points {
-        static let matchBonus = 20
+        static let matchBonus       = 20
         static let missMatchPenalty = 10
-        static var maxTimePenalty = 10
-        static var flipOverPenalty = 1
+        static var maxTimePenalty   = 10
+        static var flipOverPenalty  = 1
+        static var deal3Penalty     = 5
     }
     
     private struct Constants {

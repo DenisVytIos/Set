@@ -10,17 +10,33 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    enum Player:Int{
+        case me = 1
+        case iPhone
+    }
+    private var currentPLayer = Player.me{
+        didSet{
+            game.playerIndex = currentPLayer.rawValue - 1
+        }
+    }
+    
     private var game = SetGame()
 
     var colors                 = [#colorLiteral(red: 1, green: 0.4163245823, blue: 0, alpha: 1), #colorLiteral(red: 0.6679978967, green: 0.4751212597, blue: 0.2586010993, alpha: 1), #colorLiteral(red: 0.01680417731, green: 0.1983509958, blue: 1, alpha: 1)]
     var strokeWidths:[CGFloat] = [ -10, 10, -10]
     var alphas:[CGFloat]       = [1.0, 0.60, 0.15]
     
-    @IBOutlet weak var messageLabel: UILabel!
+   
     @IBOutlet weak var deckCountLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
+    //-----------Me--------------
     
+    @IBOutlet weak var messageLabel: UILabel!
+    @IBOutlet weak var scorelabel: UILabel!
+    //---------iPhone------------
     @IBOutlet weak var iPhoneLabel: UILabel!
+    @IBOutlet weak var messageIphoneLabel: UILabel!
+    @IBOutlet weak var scoreIPhoneLabel: UILabel!
     
     @IBOutlet var cardButtons: [SetCardButton]! {
         didSet {
@@ -37,9 +53,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var hintButton: BorderButton!
     
     @IBAction func touchCard(_ sender: SetCardButton) {
+        timer1?.invalidate()
+        currentPLayer = .me
         if let cardNumber = cardButtons.index(of: sender) {
             game.chooseCard(at: cardNumber)
             updateViewFromModel()
+            if let itIsSet = game.isSet, itIsSet{
+                TryiPhone()
+            }
         } else {
             print("choosen card was not in cardButtons")
         }
@@ -49,7 +70,9 @@ class ViewController: UIViewController {
         updateButtonsFromModel()
         updateHintButton()
         deckCountLabel.text = "Deck: \(game.deckCount )"
-        scoreLabel.text     = "Score: \(game.score) / \(game.numberSets)"
+
+        scoreLabel.text       = "Score: \(game.score[0]) / \(game.numberSets[0])"
+        scoreIPhoneLabel.text = "Score: \(game.score[1]) / \(game.numberSets[1])"
         
         dealButton.disable = (game.cardsOnTable.count) >= cardButtons.count
             || game.deckCount == 0
@@ -96,6 +119,7 @@ class ViewController: UIViewController {
     }
     
     private weak var timer: Timer?
+    private weak var timer1: Timer?
     private var _lastHint = 0
     
     @IBAction func hint() {
@@ -125,14 +149,86 @@ class ViewController: UIViewController {
         cardButtons.forEach { $0.setCard = nil }
         updateViewFromModel()
     }
-    
     //     MARK:    ViewController lifecycle methods
     
     override func viewDidLoad() {
         super.viewDidLoad ()
         updateViewFromModel()
     }
+    
+    //     MARK:   Actions for iPhone
+    
+    private func neutralizationSet (){
+        //--- neutralize Set from .me
+        var cardsOnTable = game.cardsOnTable
+        cardsOnTable.remove(elements: game.cardsTryMatched)
+        let randomCard = cardsOnTable [cardsOnTable.count.arc4random]
+        if let randomIndex  = game.cardsOnTable.index(of: randomCard) {
+            game.chooseCard(at: randomIndex )
+        }
+    }
+    private func removeSelectedCards (){
+        // remove selected cards
+        game.cardsSelected.forEach { card in
+            if let idx = game.cardsOnTable.index(of: card){
+                game.chooseCard(at: idx)
+            }
+        }
+    }
+    
+    private func selectHintSet (){
+        // success hint Set
+        if game.hints.count > 0 {
+            game.hints[0].forEach { idx in
+                game.chooseCard(at: idx)
+            }
+        }
+    }
+    
+    private func selectRandomSet(){
+        var cardsOnTable = game.cardsOnTable
+        cardsOnTable.shuffle()
+        for index in 0..<3 {
+            if let idx = game.cardsOnTable.index(of: cardsOnTable[index]){
+                game.chooseCard(at: idx)
+            }
+        }
+    }
+    
+    private func TryiPhone(){
+        //-----------TryiPhone----------------------
+        timer1 = Timer.scheduledTimer(withTimeInterval:
+        Constants.iPhoneWaitTime, repeats: false) {[weak self] time in
+            
+            self?.currentPLayer = .iPhone
+            self?.iPhoneLabel.text = "  😄  "
+            self?.iPhoneLabel.backgroundColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
+            
+            //--- neutralize Set from .me
+            self?.neutralizationSet ()
+            
+            // remove selected cards
+            self?.removeSelectedCards ()
+            
+            // flip a coin with probability 2/3
+            if  Int.randomNumber(probabilities: [1, 2]) == 1 {
+                // success hint Set
+                self?.selectHintSet ()
+            } else {
+                // fail random Set
+                self?.selectRandomSet()
+            }
+            self?.updateViewFromModel()
+            if let itIsSet = self?.game.isSet {
+                self?.iPhoneLabel.text = itIsSet ? "  😂!!!" : "  😥..."
+            } else {
+                self?.iPhoneLabel.text = "🤢 No Sets at all."
+            }
+        }
+    }
+
 }
+
 
 extension ViewController {
     //------------------ Constants -------------
@@ -145,11 +241,42 @@ extension ViewController {
     
     private struct Constants {
         static let flashTime = 1.5
+        static let iPhoneWaitTime = 2.0
     }
 }
 
 extension Int {
     func incrementCicle (in number: Int)-> Int {
         return (number - 1) > self ? self + 1: 0
+    }
+    
+    static func randomNumber(probabilities: [Int]) -> Int {
+        
+        // Sum of all probabilities (so that we don't have to require that the sum is 1.0):
+        let sum = probabilities.reduce(0, +)
+        // Random number in the range 0.0 <= rnd < sum :
+        let rnd = sum.arc4random
+        // Find the first interval of accumulated probabilities into which `rnd` falls:
+        var accum = 0
+        for (i, p) in probabilities.enumerated() {
+            accum += p
+            if rnd < accum {
+                return i
+            }
+        }
+        return (probabilities.count - 1)
+    }
+}
+extension Array {
+    /// тасование элементов  `self` "по месту".
+    mutating func shuffle() {
+        // пустая коллекция и с одним элементом не тасуются
+        if count < 2 { return }
+        
+        for i in indices.dropLast() {
+            let diff = distance(from: i, to: endIndex)
+            let j = index(i, offsetBy: diff.arc4random)
+            swapAt(i, j)
+        }
     }
 }
