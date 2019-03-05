@@ -124,12 +124,15 @@ struct SetGame{
             }
         }
     }
+    mutating func shuffle(){
+        cardsOnTable.shuffle()
+    }
     //------------------ Constants -------------
     private struct Points {
-        static let matchBonus = 20
+        static let matchBonus       = 20
         static let missMatchPenalty = 10
-        static var maxTimePenalty = 10
-        static var flipOverPenalty = 1
+        static var maxTimePenalty   = 10
+        static var flipOverPenalty  = 1
     }
     
     private struct Constants {
@@ -169,5 +172,17 @@ extension Array where Element : Equatable {
         return elements.map{self.index(of: $0)}.compactMap{$0}
     }
 }
-
+extension Array {
+    /// тасование элементов  `self` "по месту".
+    mutating func shuffle() {
+        // пустая коллекция и с одним элементом не тасуются
+        if count < 2 { return }
+        
+        for i in indices.dropLast() {
+            let diff = distance(from: i, to: endIndex)
+            let j = index(i, offsetBy: diff.arc4random)
+            swapAt(i, j)
+        }
+    }
+}
 

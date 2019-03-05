@@ -11,486 +11,19 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Set Game View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Set" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="SetGameViewController" customModule="Set" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="qsj-gu-pgb">
-                                <rect key="frame" x="8" y="44" width="359" height="650"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="VCU-1f-GkK">
-                                        <rect key="frame" x="0.0" y="0.0" width="359" height="101.66666666666667"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="ISO-rU-uCC" customClass="SetCardButton" customModule="Set" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="83.666666666666671" height="101.66666666666667"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <state key="normal">
-                                                    <string key="title">▲
-●
-◼︎</string>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="o7v-3a-eKk"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="NVR-cX-FdQ" customClass="SetCardButton" customModule="Set" customModuleProvider="target">
-                                                <rect key="frame" x="91.666666666666686" y="0.0" width="84" height="101.66666666666667"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <state key="normal">
-                                                    <string key="title">▲
-●
-◼︎</string>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RjE-7k-gKP"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="yrP-AD-djY" customClass="SetCardButton" customModule="Set">
-                                                <rect key="frame" x="183.66666666666666" y="0.0" width="83.666666666666657" height="101.66666666666667"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <state key="normal">
-                                                    <string key="title">▲
-●
-◼︎</string>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3OM-5m-166"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="1hD-By-Qd3" customClass="SetCardButton" customModule="Set" customModuleProvider="target">
-                                                <rect key="frame" x="275.33333333333331" y="0.0" width="83.666666666666686" height="101.66666666666667"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <state key="normal">
-                                                    <string key="title">▲
-●
-◼︎</string>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aiG-ue-PPW"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="8vV-6u-dsR">
-                                        <rect key="frame" x="0.0" y="109.66666666666666" width="359" height="101.66666666666666"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="pNR-Wz-Rzg" customClass="SetCardButton" customModule="Set" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="83.666666666666671" height="101.66666666666667"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <state key="normal">
-                                                    <string key="title">▲
-●
-◼︎</string>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="B9q-ek-Cfj"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="7b9-In-6Hc" customClass="SetCardButton" customModule="Set" customModuleProvider="target">
-                                                <rect key="frame" x="91.666666666666686" y="0.0" width="84" height="101.66666666666667"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <state key="normal">
-                                                    <string key="title">▲
-●
-◼︎</string>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ujg-nu-Mho"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="fow-H9-3MT" customClass="SetCardButton" customModule="Set" customModuleProvider="target">
-                                                <rect key="frame" x="183.66666666666666" y="0.0" width="83.666666666666657" height="101.66666666666667"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <state key="normal">
-                                                    <string key="title">▲
-●
-◼︎</string>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Q8n-ya-zdm"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="y7X-dO-JQq" customClass="SetCardButton" customModule="Set" customModuleProvider="target">
-                                                <rect key="frame" x="275.33333333333331" y="0.0" width="83.666666666666686" height="101.66666666666667"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <state key="normal">
-                                                    <string key="title">▲
-●
-◼︎</string>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bF7-TH-l6T"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Sy9-pV-Oc2">
-                                        <rect key="frame" x="0.0" y="219.33333333333329" width="359" height="101.66666666666666"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="8QU-mW-dhF" customClass="SetCardButton" customModule="Set" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="83.666666666666671" height="101.66666666666667"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <state key="normal">
-                                                    <string key="title">▲
-●
-◼︎</string>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2Gq-b9-gqv"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="W6D-8a-kYg" customClass="SetCardButton" customModule="Set" customModuleProvider="target">
-                                                <rect key="frame" x="91.666666666666686" y="0.0" width="84" height="101.66666666666667"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <state key="normal">
-                                                    <string key="title">▲
-●
-◼︎</string>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="A5R-Mq-6fs"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="dDE-9J-f9w" customClass="SetCardButton" customModule="Set" customModuleProvider="target">
-                                                <rect key="frame" x="183.66666666666666" y="0.0" width="83.666666666666657" height="101.66666666666667"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <state key="normal">
-                                                    <string key="title">▲
-●
-◼︎</string>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gNr-u3-zjm"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="qjf-tE-fAc" customClass="SetCardButton" customModule="Set" customModuleProvider="target">
-                                                <rect key="frame" x="275.33333333333331" y="0.0" width="83.666666666666686" height="101.66666666666667"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <state key="normal">
-                                                    <string key="title">▲
-●
-◼︎</string>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g5q-hB-38g"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="KeY-gX-525">
-                                        <rect key="frame" x="0.0" y="329" width="359" height="101.66666666666669"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="g4O-6W-qmr" customClass="SetCardButton" customModule="Set" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="83.666666666666671" height="101.66666666666667"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <state key="normal">
-                                                    <string key="title">▲
-●
-◼︎</string>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Gz9-rH-F7v"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Gx6-G8-O3T" customClass="SetCardButton" customModule="Set" customModuleProvider="target">
-                                                <rect key="frame" x="91.666666666666686" y="0.0" width="84" height="101.66666666666667"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <state key="normal">
-                                                    <string key="title">▲
-●
-◼︎</string>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="b7i-Ee-fAa"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="IyL-EO-9PT" customClass="SetCardButton" customModule="Set" customModuleProvider="target">
-                                                <rect key="frame" x="183.66666666666666" y="0.0" width="83.666666666666657" height="101.66666666666667"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <state key="normal">
-                                                    <string key="title">▲
-●
-◼︎</string>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MhM-2B-5cb"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="kBk-7n-NZh" customClass="SetCardButton" customModule="Set" customModuleProvider="target">
-                                                <rect key="frame" x="275.33333333333331" y="0.0" width="83.666666666666686" height="101.66666666666667"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <state key="normal">
-                                                    <string key="title">▲
-●
-◼︎</string>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Iiz-Sv-HeW"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="hNB-2t-na8">
-                                        <rect key="frame" x="0.0" y="438.66666666666669" width="359" height="101.66666666666669"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="LSr-mq-LFZ" customClass="SetCardButton" customModule="Set" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="83.666666666666671" height="101.66666666666667"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <state key="normal">
-                                                    <string key="title">▲
-●
-◼︎</string>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tgd-Dj-H2b"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="wJn-9W-n15" customClass="SetCardButton" customModule="Set" customModuleProvider="target">
-                                                <rect key="frame" x="91.666666666666686" y="0.0" width="84" height="101.66666666666667"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <state key="normal">
-                                                    <string key="title">▲
-●
-◼︎</string>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="os0-KZ-rd0"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="qcv-Ad-kXc" customClass="SetCardButton" customModule="Set" customModuleProvider="target">
-                                                <rect key="frame" x="183.66666666666666" y="0.0" width="83.666666666666657" height="101.66666666666667"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <state key="normal">
-                                                    <string key="title">▲
-●
-◼︎</string>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5ln-YR-4Zn"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Mcm-Le-kt2" customClass="SetCardButton" customModule="Set" customModuleProvider="target">
-                                                <rect key="frame" x="275.33333333333331" y="0.0" width="83.666666666666686" height="101.66666666666667"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <state key="normal">
-                                                    <string key="title">▲
-●
-◼︎</string>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TpS-sk-3uk"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="SH2-4O-9V4">
-                                        <rect key="frame" x="0.0" y="548.33333333333337" width="359" height="101.66666666666663"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="GX1-Sy-fYl" customClass="SetCardButton" customModule="Set" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="83.666666666666671" height="101.66666666666667"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <state key="normal">
-                                                    <string key="title">▲
-●
-◼︎</string>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="76o-V3-Afd"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="K2J-uB-4w2" customClass="SetCardButton" customModule="Set" customModuleProvider="target">
-                                                <rect key="frame" x="91.666666666666686" y="0.0" width="84" height="101.66666666666667"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <state key="normal">
-                                                    <string key="title">▲
-●
-◼︎</string>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="R2G-E4-CsW"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="cAw-zf-Z7L" customClass="SetCardButton" customModule="Set" customModuleProvider="target">
-                                                <rect key="frame" x="183.66666666666666" y="0.0" width="83.666666666666657" height="101.66666666666667"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <state key="normal">
-                                                    <string key="title">▲
-●
-◼︎</string>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wkh-Go-Omj"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="wio-4Q-Edx" customClass="SetCardButton" customModule="Set" customModuleProvider="target">
-                                                <rect key="frame" x="275.33333333333331" y="0.0" width="83.666666666666686" height="101.66666666666667"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                                <state key="normal">
-                                                    <string key="title">▲
-●
-◼︎</string>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="touchCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yYQ-mL-b1o"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="GQX-Va-xbi">
-                                <rect key="frame" x="8" y="704.66666666666663" width="359" height="39"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="GQX-Va-xbi">
+                                <rect key="frame" x="45" y="109" width="338" height="39"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mg7-Tf-gvP" customClass="BorderButton" customModule="Set" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="63.666666666666664" height="39"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="106" height="39"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <state key="normal" title="Hint">
@@ -515,7 +48,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZwM-2S-zTq" customClass="BorderButton" customModule="Set" customModuleProvider="target">
-                                        <rect key="frame" x="71.666666666666671" y="0.0" width="168.33333333333331" height="39"/>
+                                        <rect key="frame" x="116" y="0.0" width="106" height="39"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <state key="normal" title="New Game">
@@ -526,7 +59,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kbm-el-wun" customClass="BorderButton" customModule="Set" customModuleProvider="target">
-                                        <rect key="frame" x="248" y="0.0" width="111" height="39"/>
+                                        <rect key="frame" x="232" y="0.0" width="106" height="39"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <state key="normal" title="Deal 3 +">
@@ -542,6 +75,8 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <variation key="heightClass=compact" axis="vertical"/>
+                                <variation key="heightClass=regular-widthClass=regular" spacing="60"/>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="4em-v8-QSd">
                                 <rect key="frame" x="8" y="751.66666666666663" width="359" height="26.333333333333371"/>
@@ -566,59 +101,54 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eRq-fF-kel" customClass="BoardView" customModule="Set" customModuleProvider="target">
+                                <rect key="frame" x="8" y="52" width="606" height="691.66666666666663"/>
+                                <color key="backgroundColor" red="0.2193749414" green="0.57140307739999996" blue="0.1656191967" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.21937494137815647" green="0.57140307741116758" blue="0.16561919671422654" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qsj-gu-pgb" secondAttribute="trailing" constant="8" id="0o7-v8-qay"/>
+                            <constraint firstItem="4em-v8-QSd" firstAttribute="top" secondItem="eRq-fF-kel" secondAttribute="bottom" constant="8" id="0a6-Az-0jX"/>
                             <constraint firstItem="4em-v8-QSd" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="1Lu-wq-DIE"/>
+                            <constraint firstItem="GQX-Va-xbi" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="65" id="98x-uh-hDR"/>
+                            <constraint firstItem="eRq-fF-kel" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="ES1-4b-YDQ"/>
+                            <constraint firstItem="GQX-Va-xbi" firstAttribute="leading" secondItem="eRq-fF-kel" secondAttribute="trailing" constant="56" id="FVN-YR-6PO"/>
+                            <constraint firstItem="GQX-Va-xbi" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="8" id="HZR-xf-cnS"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4em-v8-QSd" secondAttribute="trailing" constant="8" id="QRV-pj-5Kd"/>
-                            <constraint firstItem="GQX-Va-xbi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="V5x-qp-wD3"/>
+                            <constraint firstItem="eRq-fF-kel" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="VJd-O0-KRr"/>
                             <constraint firstItem="4em-v8-QSd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="Vgv-Cw-sZF"/>
-                            <constraint firstItem="qsj-gu-pgb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="asF-Z1-Arr"/>
-                            <constraint firstItem="qsj-gu-pgb" firstAttribute="top" relation="lessThanOrEqual" secondItem="GQX-Va-xbi" secondAttribute="top" id="eWN-vR-RCy"/>
-                            <constraint firstItem="qsj-gu-pgb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="guE-hZ-JwF"/>
-                            <constraint firstItem="GQX-Va-xbi" firstAttribute="top" relation="greaterThanOrEqual" secondItem="SH2-4O-9V4" secondAttribute="bottom" id="ow9-lp-hPT"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GQX-Va-xbi" secondAttribute="trailing" constant="8" id="weD-w4-cH5"/>
-                            <constraint firstItem="4em-v8-QSd" firstAttribute="top" secondItem="GQX-Va-xbi" secondAttribute="bottom" constant="8" symbolic="YES" id="yd2-OL-ooC"/>
+                            <constraint firstItem="GQX-Va-xbi" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="cHR-m0-3wq"/>
+                            <constraint firstAttribute="trailing" secondItem="eRq-fF-kel" secondAttribute="trailing" constant="-239" id="knk-Ih-B6B"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="FVN-YR-6PO"/>
+                                <exclude reference="cHR-m0-3wq"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact">
+                            <mask key="constraints">
+                                <include reference="FVN-YR-6PO"/>
+                                <include reference="cHR-m0-3wq"/>
+                                <exclude reference="0a6-Az-0jX"/>
+                                <exclude reference="Vgv-Cw-sZF"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
+                        <outlet property="boardView" destination="eRq-fF-kel" id="5aW-pV-CK6"/>
                         <outlet property="dealButton" destination="Kbm-el-wun" id="2MF-Ib-Iwl"/>
                         <outlet property="deckCountLabel" destination="H9e-An-lnb" id="1i5-gh-wY3"/>
                         <outlet property="hintButton" destination="Mg7-Tf-gvP" id="1hM-0q-X1a"/>
                         <outlet property="messageLabel" destination="hSC-dg-amH" id="cNj-kx-uMD"/>
                         <outlet property="newButton" destination="ZwM-2S-zTq" id="pS4-Fo-5c5"/>
                         <outlet property="scoreLabel" destination="Qc4-p0-aob" id="SvS-Pb-DQ6"/>
-                        <outletCollection property="cardButtons" destination="ISO-rU-uCC" collectionClass="NSMutableArray" id="rAd-F4-tnc"/>
-                        <outletCollection property="cardButtons" destination="NVR-cX-FdQ" collectionClass="NSMutableArray" id="mBw-z6-81I"/>
-                        <outletCollection property="cardButtons" destination="yrP-AD-djY" collectionClass="NSMutableArray" id="iuq-Cn-w5d"/>
-                        <outletCollection property="cardButtons" destination="1hD-By-Qd3" collectionClass="NSMutableArray" id="oQc-dt-vMm"/>
-                        <outletCollection property="cardButtons" destination="pNR-Wz-Rzg" collectionClass="NSMutableArray" id="AKA-os-Rp1"/>
-                        <outletCollection property="cardButtons" destination="7b9-In-6Hc" collectionClass="NSMutableArray" id="JSY-Gm-uS0"/>
-                        <outletCollection property="cardButtons" destination="fow-H9-3MT" collectionClass="NSMutableArray" id="rEu-qe-Chp"/>
-                        <outletCollection property="cardButtons" destination="y7X-dO-JQq" collectionClass="NSMutableArray" id="WV3-AS-t3i"/>
-                        <outletCollection property="cardButtons" destination="8QU-mW-dhF" collectionClass="NSMutableArray" id="0CK-bQ-8hP"/>
-                        <outletCollection property="cardButtons" destination="W6D-8a-kYg" collectionClass="NSMutableArray" id="NZm-qL-9Su"/>
-                        <outletCollection property="cardButtons" destination="dDE-9J-f9w" collectionClass="NSMutableArray" id="zhG-mL-v9T"/>
-                        <outletCollection property="cardButtons" destination="qjf-tE-fAc" collectionClass="NSMutableArray" id="hvS-Zq-NiR"/>
-                        <outletCollection property="cardButtons" destination="g4O-6W-qmr" collectionClass="NSMutableArray" id="Z5F-f2-67M"/>
-                        <outletCollection property="cardButtons" destination="Gx6-G8-O3T" collectionClass="NSMutableArray" id="LGG-4G-Wql"/>
-                        <outletCollection property="cardButtons" destination="IyL-EO-9PT" collectionClass="NSMutableArray" id="txx-8a-2Dc"/>
-                        <outletCollection property="cardButtons" destination="kBk-7n-NZh" collectionClass="NSMutableArray" id="kNI-sw-cZC"/>
-                        <outletCollection property="cardButtons" destination="LSr-mq-LFZ" collectionClass="NSMutableArray" id="Kwh-g2-cVd"/>
-                        <outletCollection property="cardButtons" destination="wJn-9W-n15" collectionClass="NSMutableArray" id="BO6-2i-m5X"/>
-                        <outletCollection property="cardButtons" destination="qcv-Ad-kXc" collectionClass="NSMutableArray" id="tX2-m0-MlB"/>
-                        <outletCollection property="cardButtons" destination="Mcm-Le-kt2" collectionClass="NSMutableArray" id="VPi-Dr-TFW"/>
-                        <outletCollection property="cardButtons" destination="GX1-Sy-fYl" collectionClass="NSMutableArray" id="1tw-Ww-jpr"/>
-                        <outletCollection property="cardButtons" destination="K2J-uB-4w2" collectionClass="NSMutableArray" id="lvp-j4-V3R"/>
-                        <outletCollection property="cardButtons" destination="cAw-zf-Z7L" collectionClass="NSMutableArray" id="CWc-oV-ELH"/>
-                        <outletCollection property="cardButtons" destination="wio-4Q-Edx" collectionClass="NSMutableArray" id="CtC-I3-R7B"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-855" y="29"/>
+            <point key="canvasLocation" x="-3114" y="-512"/>
         </scene>
     </scenes>
 </document>

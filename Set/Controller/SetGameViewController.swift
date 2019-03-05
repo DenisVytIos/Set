@@ -8,8 +8,21 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class SetGameViewController: UIViewController {
     
+    @IBOutlet weak var boardView: BoardView!{
+        didSet{
+            let swipe = UISwipeGestureRecognizer(target: self,
+                                                 action: #selector(deal3))
+            swipe.direction = .down
+            boardView.addGestureRecognizer(swipe)
+            
+            let rotate = UIRotationGestureRecognizer(target: self,
+                                                     action: #selector(reshuffle))
+            boardView.addGestureRecognizer(rotate)
+        }
+    }
+  
     private var game = SetGame()
 
     var colors                 = [#colorLiteral(red: 1, green: 0.4163245823, blue: 0, alpha: 1), #colorLiteral(red: 0.6679978967, green: 0.4751212597, blue: 0.2586010993, alpha: 1), #colorLiteral(red: 0.01680417731, green: 0.1983509958, blue: 1, alpha: 1)]
@@ -46,19 +59,89 @@ class ViewController: UIViewController {
     }
     
     private func updateViewFromModel() {
-        updateButtonsFromModel()
+        updateCardViewsFromModel()
+    
+        // update Buttons and Labels
         updateHintButton()
         deckCountLabel.text = "Deck: \(game.deckCount )"
-        scoreLabel.text     = "Score: \(game.score) / \(game.numberSets)"
-        
-        dealButton.disable = (game.cardsOnTable.count) >= cardButtons.count
-            || game.deckCount == 0
+        scoreLabel.text = "Score: \(game.score) / \(game.numberSets)"
+        if let itIsSet = game.isSet {
+            messageLabel.text = itIsSet ? "СОВПАДЕНИЕ" :"НЕСОВПАДЕНИЕ"
+        } else {
+            messageLabel.text = ""
+        }
+        dealButton.isHidden =  game.deckCount == 0
         hintButton.disable = game.hints.count == 0
     }
     
     private func updateHintButton() {
         hintButton.setTitle("\(game.hints.count ) sets", for: .normal)
         _lastHint = 0
+    }
+    private func updateCardViewsFromModel(){
+        // удаляем лишние карты из boardView
+        if boardView.cardViews.count - game.cardsOnTable.count > 0{
+            let cardViews = boardView.cardViews [..<game.cardsOnTable.count]//удаляем лишние cardViews
+            boardView.cardViews = Array(cardViews)
+        }
+        let numberCardViews = boardView.cardViews.count
+        
+        for index in game.cardsOnTable.indices {
+            let card = game.cardsOnTable[index]
+            if index > (numberCardViews - 1){ // new card
+                let cardView = SetCardView()// created new cardViews
+                updateCardView(cardView,for: card)
+                addTapGestureRecognizer(for: cardView) //added at new card gesture tap
+                boardView.cardViews.append(cardView)
+                
+            } else {                                // old cards
+                let cardView = boardView.cardViews [index]
+                updateCardView(cardView,for: card)
+            }
+        }
+    }
+    private func addTapGestureRecognizer(for cardView: SetCardView) {
+        //created tap gesture
+        let tap = UITapGestureRecognizer(
+            target: self,
+            action: #selector(tapCard(recognizedBy: )))
+        
+        tap.numberOfTapsRequired    = 1
+        tap.numberOfTouchesRequired = 1
+        cardView.addGestureRecognizer(tap)
+    }
+    
+    @objc
+    private func tapCard(recognizedBy recognizer: UITapGestureRecognizer) {
+        switch recognizer.state {
+        case .ended:
+            //обработчик жеста tap определяет грвфическую карту cardView, на которую игрок тапнул, и сообщает об етом модели визывая ее метод
+            if  let cardView = recognizer.view! as? SetCardView {
+                game.chooseCard(at: boardView.cardViews.index(of: cardView)!)
+            }
+        default:
+            break
+        }
+        updateViewFromModel()
+    }
+    
+    private func updateCardView(_ cardView: SetCardView, for card: SetCard){
+        
+//        Метод выполняет работу контроллера по синхронизации Model and View
+
+        cardView.symbolInt  = card.shape.rawValue
+        cardView.fillInt    = card.fill.rawValue
+        cardView.colorInt   = card.color.rawValue
+        cardView.count      = card.number.rawValue
+        cardView.isSelected = game.cardsSelected.contains(card)
+        
+        if let itIsSet = game.isSet {
+            if game.cardsTryMatched.contains(card) {
+                cardView.isMatched = itIsSet
+            }
+        } else {
+            cardView.isMatched = nil
+        }
     }
     
     private func updateButtonsFromModel() {
@@ -89,33 +172,27 @@ class ViewController: UIViewController {
     }
     
     @IBAction func deal3() {
-        if (game.cardsOnTable.count + 3) <= cardButtons.count {
             game.deal3()
             updateViewFromModel()
-        }
     }
     
     private weak var timer: Timer?
     private var _lastHint = 0
+    private let flashTime = 1.5
     
     @IBAction func hint() {
         timer?.invalidate()
         if  game.hints.count > 0 {
             game.hints[_lastHint].forEach { (idx) in
-                let button = self.cardButtons[idx]
-                button.setBorderColor(color: Colors.hint)
+                boardView.cardViews[idx].hint()
             }
             messageLabel.text = "Set \(_lastHint + 1) Wait..."
-            timer = Timer.scheduledTimer(withTimeInterval: Constants.flashTime,
+            timer = Timer.scheduledTimer(withTimeInterval: flashTime,
                                          repeats: false) { [weak self] time in
-                                            self?.game.hints[((self?._lastHint))!].forEach { (idx) in
-                                                let button = self?.cardButtons[idx]
-                                                button!.setBorderColor(color: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0))
-                                            }
                                             self?._lastHint =
                                                 (self?._lastHint)!.incrementCicle(in:(self?.game.hints.count)!)
                                             self?.messageLabel.text = ""
-                                            self?.updateButtonsFromModel()
+                                            self?.updateCardViewsFromModel()
             }
         }
     }
@@ -125,7 +202,16 @@ class ViewController: UIViewController {
         cardButtons.forEach { $0.setCard = nil }
         updateViewFromModel()
     }
-    
+    @objc
+    func reshuffle(_ sender: UITapGestureRecognizer) {
+        switch sender.state {
+        case .ended:
+            game.shuffle()
+            updateViewFromModel()
+        default:
+            break
+        }
+    }
     //     MARK:    ViewController lifecycle methods
     
     override func viewDidLoad() {
@@ -134,7 +220,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController {
+extension SetGameViewController {
     //------------------ Constants -------------
     private struct Colors {
         static let hint       = #colorLiteral(red: 1, green: 0.5212053061, blue: 1, alpha: 1)
