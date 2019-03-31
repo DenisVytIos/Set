@@ -10,8 +10,6 @@ import UIKit
 
 @IBDesignable
 class SetCardView: UIView {
-    
-//    как только любое из нижеперечисленных свойств устанавливается, UIView нуждается в перерисовке({ setNeedsDisplay(); setNeedsLayout() })
     @IBInspectable
     var faceBackgroundColor: UIColor = UIColor.white { didSet { setNeedsDisplay()} }
     
@@ -22,7 +20,6 @@ class SetCardView: UIView {
     var isSelected:Bool = false { didSet { setNeedsDisplay(); setNeedsLayout() } }
     var isMatched: Bool? { didSet { setNeedsDisplay(); setNeedsLayout() } }
     
-    //Int аналоги свойств Set карты
     @IBInspectable
     var symbolInt: Int = 1 { didSet {
         switch symbolInt {
@@ -79,29 +76,39 @@ class SetCardView: UIView {
     }
     
     override func draw(_ rect: CGRect) {
-//        Рисуем прямоугольник с закругленными углами
         let roundedRect = UIBezierPath(roundedRect: bounds,
                                        cornerRadius: cornerRadius)
         faceBackgroundColor.setFill()
         roundedRect.fill()
         
         if isFaceUp {
-//            Рисуем лицевую сторону
             drawPips()
         } else {
-//            Обратную сторону
-            if let cardBackImage = UIImage(named: "cardback",
+            //         drawBack()
+            
+            if let cardBackImage = UIImage(named: "card-back",
                                            in: Bundle(for: self.classForCoder),
                                            compatibleWith: traitCollection) {
                 cardBackImage.draw(in: bounds)
             }
+            
         }
+    }
+    
+    private func drawBack() {
+        UIColor.green.setFill()
+        let font = UIFont(name: "Party LET", size: backFontsize)!
+        let attr: [NSAttributedStringKey : Any] = [
+            .font : font,
+            ]
+        let text = NSAttributedString(string: "K", attributes: attr)
+        text.draw(at: CGPoint.zero)
     }
     
     private func drawPips(){
         color.setFill()
         color.setStroke()
-//        В зависимости от количества символов на карте count рисуем 1, 2, 3 символа
+        
         switch count {
         case 1:
             let origin = CGPoint(x: faceFrame.minX, y: faceFrame.midY - pipHeight/2)
@@ -131,7 +138,6 @@ class SetCardView: UIView {
     }
     
     private func drawShape(in rect: CGRect) {
-//        В зависимости от типа символа symbol рисуем волну squiggle, ромб diamond, или овал oval
         let path: UIBezierPath
         switch symbol {
         case .diamond:
@@ -144,7 +150,6 @@ class SetCardView: UIView {
         
         path.lineWidth = 3.0
         path.stroke()
-//        В зависимости от типа заполнения fill оставляем символ как есть, закрашиваем или штрихуем
         switch fill {
         case .solid:
             path.fill()
@@ -154,18 +159,15 @@ class SetCardView: UIView {
             break
         }
     }
-// В этом методе выполняем штриховку
+    
     private func stripeShape(path: UIBezierPath, in rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()
         context?.saveGState()
-//метод addClip() отсечение по траектории
         path.addClip()
-// в методе stripeRect(rect) происходит сама штриховка
         stripeRect(rect)
-//        метод stripeRect(rect) оборачивается функциями saveGState() и restoreGState()
         context?.restoreGState()
     }
-//    Волну рисуем как комбинацию 3-х кубических кривых Безье и копии этой же кривой
+    
     private func pathForSquiggle(in rect: CGRect) -> UIBezierPath {
         let upperSquiggle = UIBezierPath()
         let sqdx = rect.width * 0.1
@@ -203,7 +205,7 @@ class SetCardView: UIView {
         upperSquiggle.append(lowerSquiggle)
         return upperSquiggle
     }
-// Овал рисуем как комбинацию линий и дуг
+    
     private func pathForOval(in rect: CGRect) -> UIBezierPath {
         let oval = UIBezierPath()
         let radius = rect.height / 2
@@ -215,7 +217,7 @@ class SetCardView: UIView {
         oval.close()
         return oval
     }
-//    Ромб рисуем с помощью обычных линий
+    
     private func pathForDiamond(in rect: CGRect) -> UIBezierPath {
         let diamond = UIBezierPath()
         diamond.move(to: CGPoint(x: rect.minX, y: rect.midY))
@@ -233,13 +235,11 @@ class SetCardView: UIView {
         stripe.move(to: CGPoint(x: rect.minX, y: bounds.minY ))
         stripe.addLine(to: CGPoint(x: rect.minX, y: bounds.maxY))
         let stripeCount = Int(faceFrame.width / interStripeSpace)
-//      1 способ -  Классический способ штриховки прямимы линиями
         for _ in 1...stripeCount {
             let translation = CGAffineTransform(translationX: interStripeSpace, y: 0)
             stripe.apply(translation)
             stripe.stroke()
         }
-//        2 способ - Способ штриховки с помощью одной специально подобранной пунктирной линией шириной на всю карту
         /*
          //---- dash line
          let stripe = UIBezierPath()
@@ -314,39 +314,121 @@ class SetCardView: UIView {
     }
     
     private func configurePinLabel(_ label: UILabel) {
-
         label.attributedText = pinString
-        label.frame.size     = CGSize.zero
-        label.isHidden       = true
+        label.frame.size = CGSize.zero
         label.sizeToFit()
+        label.isHidden = true
     }
-
-    private struct Colors {
+    
+    func copyCard() -> SetCardView {
+        let copy = SetCardView()
+        copy.symbolInt =  symbolInt
+        copy.fillInt = fillInt
+        copy.colorInt = colorInt
+        copy.count =  count
+        copy.isSelected =  false
         
-        static let green  = #colorLiteral(red: 0, green: 0.5628422499, blue: 0.3188166618, alpha: 1)
-        static let red    = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
+        copy.isFaceUp = true
+        copy.bounds = bounds
+        copy.frame = frame
+        copy.alpha = 1
+        return copy
+    }
+    
+    // MARK: Deal a card animation
+    
+    func animateDeal(from deckCenter: CGPoint, delay: TimeInterval) {
+        let currentCenter = center
+        let currentBounds = bounds
+        
+        center =  deckCenter
+        alpha = 1
+        bounds = CGRect(x: 0.0, y: 0.0, width: 0.6 * bounds.width,
+                        height: 0.6 * bounds.height)
+        isFaceUp = false
+        UIViewPropertyAnimator.runningPropertyAnimator(
+            withDuration: 1,
+            delay: delay,
+            options: [],
+            animations:
+            {
+                self.center = currentCenter
+                self.bounds = currentBounds
+        },
+            completion:
+            { position in
+                UIView.transition(
+                    with: self,
+                    duration: 0.3,
+                    options: [.transitionFlipFromLeft],
+                    animations:
+                    {
+                        self.isFaceUp = true
+                }
+                )
+        }
+        )
+    }
+    
+    // MARK: Fly a card animation
+    
+    var addDiscardPile : (() -> Void)?
+    
+    func animateFly(to discardPileCenter: CGPoint, delay: TimeInterval) {
+        UIViewPropertyAnimator.runningPropertyAnimator(
+            withDuration: 1,
+            delay: delay,
+            options: [],
+            animations:
+            {
+                self.center = discardPileCenter
+        },
+            completion:
+            { position in
+                UIView.transition(
+                    with: self,
+                    duration: 0.75,
+                    options: [.transitionFlipFromLeft],
+                    animations:
+                    {
+                        self.isFaceUp = false
+                        self.transform = CGAffineTransform.identity
+                            .rotated(by: CGFloat.pi / 2.0)
+                        self.bounds = CGRect(x: 0.0, y: 0.0,
+                                             width: 0.7*self.bounds.width,
+                                             height: 0.7*self.bounds.height)
+                },
+                    completion:
+                    { finished in
+                        self.addDiscardPile?()
+                }
+                )
+        }
+        )
+    }
+    
+    private struct Colors {
+        static let green = #colorLiteral(red: 0, green: 0.5628422499, blue: 0.3188166618, alpha: 1)
+        static let red = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
         static let purple = #colorLiteral(red: 0.5791940689, green: 0.1280144453, blue: 0.5726861358, alpha: 1)
         
-        static let selected   = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1).cgColor
-        static let matched    = #colorLiteral(red: 0, green: 0.9914394021, blue: 1, alpha: 1).cgColor
+        static let selected = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1).cgColor
+        static let matched = #colorLiteral(red: 0, green: 0.9914394021, blue: 1, alpha: 1).cgColor
         static var misMatched = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1).cgColor
-        static let hint       = #colorLiteral(red: 1, green: 0.5212053061, blue: 1, alpha: 1).cgColor
+        static let hint = #colorLiteral(red: 1, green: 0.5212053061, blue: 1, alpha: 1).cgColor
     }
     
     private struct SizeRatio {
-
-        static let pinFontSizeToBoundsHeight: CGFloat  = 0.09
-        static let maxFaceSizeToBoundsSize: CGFloat    = 0.75
-        static let pipHeightToFaceHeight: CGFloat      = 0.25
+        static let pinFontSizeToBoundsHeight: CGFloat = 0.09
+        static let maxFaceSizeToBoundsSize: CGFloat = 0.75
+        static let pipHeightToFaceHeight: CGFloat = 0.25
         static let cornerRadiusToBoundsHeight: CGFloat = 0.06
-        static let pinOffset: CGFloat                  = 0.03
-
+        static let pinOffset: CGFloat = 0.03
+        static let backTextFontsizeToBoundsWidth: CGFloat = 1.4
     }
     
     private struct AspectRatio {
-        
         static let faceFrame: CGFloat = 0.60
-        
     }
     
     private var maxFaceFrame: CGRect {
@@ -374,8 +456,28 @@ class SetCardView: UIView {
         return bounds.size.height * SizeRatio.cornerRadiusToBoundsHeight
     }
     
+    private var backFontsize: CGFloat {
+        return bounds.width * SizeRatio.backTextFontsizeToBoundsWidth
+    }
+    
     private let interStripeSpace: CGFloat = 5.0
     private let borderWidth: CGFloat = 5.0
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
+    
+    private func setup() {
+        backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
+        isOpaque = false
+        alpha = 0
+    }
 }
 
 extension CGRect {
